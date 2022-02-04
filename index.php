@@ -29,8 +29,6 @@ try {
   );
    
   $post_data = json_encode($data);
-  print_r($post_data);
-  die("sdad");
    
   // Prepare new cURL resource
   $crl = curl_init('https://business-api.tiktok.com/open_api/v1.2/pixel/track/');
@@ -47,7 +45,8 @@ try {
    
   // Submit the POST request
   $result = curl_exec($crl);
-   
+   print_r($result);
+   die("sadasd");
   // handle curl error
   if ($result === false) {
       // throw new Exception('Curl error: ' . curl_error($crl));
