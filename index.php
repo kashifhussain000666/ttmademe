@@ -45,16 +45,14 @@ try {
    
   // Submit the POST request
   $result = curl_exec($crl);
-   print_r($result);
-   die("sadasd");
   // handle curl error
   if ($result === false) {
       // throw new Exception('Curl error: ' . curl_error($crl));
       //print_r('Curl error: ' . curl_error($crl));
-      $result_noti = 0; die();
+      $result_noti = 0; 
   } else {
 
-      $result_noti = 1; die();
+      $result_noti = 1; 
   }
   // Close cURL session handle
   curl_close($crl);
