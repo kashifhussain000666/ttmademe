@@ -1,5 +1,4 @@
 <?php
-die(":sdasd");
 try {
 
  // A sample PHP Script to POST data using cURL
@@ -30,6 +29,8 @@ try {
   );
    
   $post_data = json_encode($data);
+  print_r($post_data);
+  die("sdad");
    
   // Prepare new cURL resource
   $crl = curl_init('https://business-api.tiktok.com/open_api/v1.2/pixel/track/');
