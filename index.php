@@ -1,5 +1,5 @@
 <?php
-die(":sdasd")
+die(":sdasd");
 try {
 
  // A sample PHP Script to POST data using cURL
