@@ -1,3 +1,69 @@
+<?php
+try {
+
+ // A sample PHP Script to POST data using cURL
+ 
+  $data = array(
+      'pixel_code' => 'C7U51M5TSIPDF1VIFEF0',
+      'event' => 'InitiateCheckout',
+      'event_id' => '1616318632825_357',
+      'timestamp' => '2020-09-17T19:49:27Z',
+      'context' => array(
+            "ad"         => array(
+            'callback' => '123ATXSfe'
+            )
+      ),
+      'page' => array(
+      'url' => 'https://ttmademe.herokuapp.com/',
+      'referrer' => 'https://ttmademe.herokuapp.com/'
+      ),
+      'user' => array(
+      'external_id' => 'f0e388f53921a51f0bb0fc8a2944109ec188b59172935d8f23020b1614cc44bc',
+      'phone_number' => '2f9d2b4df907e5c9a7b3434351b55700167b998a83dc479b825096486ffcf4ea',
+      'email' => 'dd6ff77f54e2106661089bae4d40cdb600979bf7edc9eb65c0942ba55c7c2d7f'
+      
+      ),
+      'user_agent' => 'Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion',
+
+      'ip' => '13.57.97.131',
+  );
+   
+  $post_data = json_encode($data);
+   
+  // Prepare new cURL resource
+  $crl = curl_init('https://business-api.tiktok.com/open_api/v1.2/pixel/track/');
+  curl_setopt($crl, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($crl, CURLINFO_HEADER_OUT, true);
+  curl_setopt($crl, CURLOPT_POST, true);
+  curl_setopt($crl, CURLOPT_POSTFIELDS, $post_data);
+   
+  // Set HTTP Header for POST request 
+  curl_setopt($crl, CURLOPT_HTTPHEADER, array(
+      'Access-Token: ba804eec21ab0d2fa2215953bfd4f584c7f68fe3',
+      'Content-Type: application/json')
+  );
+   
+  // Submit the POST request
+  $result = curl_exec($crl);
+   
+  // handle curl error
+  if ($result === false) {
+      // throw new Exception('Curl error: ' . curl_error($crl));
+      //print_r('Curl error: ' . curl_error($crl));
+      $result_noti = 0; die();
+  } else {
+
+      $result_noti = 1; die();
+  }
+  // Close cURL session handle
+  curl_close($crl);
+}
+//catch exception
+catch(Exception $e) {
+  echo 'Message: ' .$e->getMessage();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
