@@ -2,20 +2,30 @@
 try {
 
  // A sample PHP Script to POST data using cURL
+$pixelcode = 'C7U51M5TSIPDF1VIFEF0'
+$user_agent = 	$_SERVER['HTTP_USER_AGENT']??null;
+$timestamp = date("Y-m-d"). "T".date("H:i:s") . "Z";
+$event = 'InitiateCheckout';
+$event_id = '1616318632825_357';
+$IP = getUserIpAddr();
+$AccessToken = 'ba804eec21ab0d2fa2215953bfd4f584c7f68fe3';
+$callback = '123ATXSfe';
+$referrer = 'https://ttmademe.herokuapp.com/';
+$url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
  
   $data = array(
-      'pixel_code' => 'C7U51M5TSIPDF1VIFEF0',
-      'event' => 'InitiateCheckout',
-      'event_id' => '1616318632825_357',
-      'timestamp' => '2020-09-17T19:49:27Z',
+      'pixel_code' => $pixelcode,
+      'event' => $event,
+      'event_id' => $event_id,
+      'timestamp' => $timestamp,
       'context' => array(
             "ad"         => array(
-            'callback' => '123ATXSfe'
+            'callback' => $callback
             )
       ),
       'page' => array(
-      'url' => 'https://ttmademe.herokuapp.com/',
-      'referrer' => 'https://ttmademe.herokuapp.com/'
+      'url' => $url,
+      'referrer' => $referrer
       ),
       'user' => array(
       'external_id' => 'f0e388f53921a51f0bb0fc8a2944109ec188b59172935d8f23020b1614cc44bc',
@@ -23,9 +33,9 @@ try {
       'email' => 'dd6ff77f54e2106661089bae4d40cdb600979bf7edc9eb65c0942ba55c7c2d7f'
       
       ),
-      'user_agent' => 'Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion',
+      'user_agent' => $user_agent,
 
-      'ip' => '13.57.97.131',
+      'ip' => $IP,
   );
    
   $post_data = json_encode($data);
@@ -39,12 +49,13 @@ try {
    
   // Set HTTP Header for POST request 
   curl_setopt($crl, CURLOPT_HTTPHEADER, array(
-      'Access-Token: ba804eec21ab0d2fa2215953bfd4f584c7f68fe3',
+      'Access-Token: '.$AccessToken,
       'Content-Type: application/json')
   );
    
   // Submit the POST request
   $result = curl_exec($crl);
+  print_r($result);
   // handle curl error
   if ($result === false) {
       // throw new Exception('Curl error: ' . curl_error($crl));
@@ -60,6 +71,20 @@ try {
 //catch exception
 catch(Exception $e) {
   echo 'Message: ' .$e->getMessage();
+}
+
+
+function getUserIpAddr(){
+    if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+        //ip from share internet
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+        //ip pass from proxy
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    }else{
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
 }
 ?>
 
