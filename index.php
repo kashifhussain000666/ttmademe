@@ -2,7 +2,7 @@
 try {
 
  // A sample PHP Script to POST data using cURL
-$pixelcode = 'C7U51M5TSIPDF1VIFEF0'
+$pixelcode = 'C7U51M5TSIPDF1VIFEF0';
 $user_agent = 	$_SERVER['HTTP_USER_AGENT']??null;
 $timestamp = date("Y-m-d"). "T".date("H:i:s") . "Z";
 $event = 'InitiateCheckout';
