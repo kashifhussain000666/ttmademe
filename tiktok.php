@@ -1,7 +1,7 @@
 <?php
 try {
 
-die("sad");
+
 //'123ATXSfe'
 $ttclid = '';
 $event = '';
@@ -15,6 +15,7 @@ if(isset($_GET['event']))
   $event = $_GET['event'];
  // A sample PHP Script to POST data using cURL
 }
+die("sad");
 $pixelcode = 'C7U51M5TSIPDF1VIFEF0';
 $user_agent = 	$_SERVER['HTTP_USER_AGENT']??null;
 $timestamp = date("Y-m-d"). "T".date("H:i:s") . "Z";
