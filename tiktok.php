@@ -97,7 +97,6 @@ function getUserIpAddr(){
     }
     return $ip;
 }
-?>
 echo "Success";
 
 
