@@ -55,7 +55,7 @@ $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http
    
   // Submit the POST request
   $result = curl_exec($crl);
-  print_r($result);
+  //print_r($result);
   // handle curl error
   if ($result === false) {
       // throw new Exception('Curl error: ' . curl_error($crl));

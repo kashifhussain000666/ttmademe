@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule ^(.*)/tiktok?(.*) $1/tiktok.php?$2 [NC]
