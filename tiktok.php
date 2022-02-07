@@ -1,6 +1,7 @@
 <?php
 try {
 
+die("sad");
 //'123ATXSfe'
 $ttclid = '';
 $event = '';
@@ -84,3 +85,5 @@ $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http
 catch(Exception $e) {
   echo 'Message: ' .$e->getMessage();
 }
+echo "Success";
+?>
